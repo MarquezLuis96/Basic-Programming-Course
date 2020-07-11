@@ -38,4 +38,4 @@ function drawLine(color, x1, y1, x2, y2) {
     lienzo.lineTo(x2, y2);
     lienzo.stroke();
     lienzo.closePath();
-}
+}   
