@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <title>Draw using for & while</title>
+        <title>Events & forms</title>
 
         <style>
             body {
                 background-color: #AAAAFF;
-                color: #FFFFFF
+                color: #FFFFFF;
             }
-            
+
             canvas {
                 background-color: #FFFFFF;
             }
@@ -17,9 +17,14 @@
     </head>
 
     <body>
-        <h1>Drawing on Canvas using for & while</h1>
+        <h1>Events & forms</h1>
+        <p>How many lines do you want to draw?
+            <input type="text" id="text_lines"/>
+            <input type="button" value="Send" id="button_send"/>
+        </p>
 
-        <canvas width="300" height="300" id="draw"></canvas>
+        <canvas width="450px" height="450px" id="little_draw"></canvas>
+
         <script src="./js/code.js"></script>
     </body>
 
