@@ -1,25 +1,66 @@
 var vp = document.getElementById("farm");
 var paper = vp.getContext("2d");
 
+var nCows = randomF(0, 10);
+console.log("Cows: " + nCows);
+var nPigs = randomF(0, 6);
+console.log("Pigs: " + nPigs);
+var nChickens = randomF(0, 5);
+console.log("Chickens: " + nChickens);
+var nWolfs = randomF(0, 3);
+console.log("Wolfs: " + nWolfs);
+
 function draw() {
     if (villeBackgroung.loadOk == true){
         drawBackground();
     }
 
     if (cow.loadOk) {
-        drawCows();
+        for(var i= 0; i < nCows; i++) {
+            var x = randomF(0, 5);
+            var y = randomF(0, 5);;
+
+            x*=80;
+            y*=80;
+
+            drawCows(x, y);
+        }
     }
 
     if(pig.loadOk) {
-        drawPigs();
+        for(var i=0; i < nPigs; i++) {
+            var x = randomF(0, 5);
+            var y = randomF(0, 5);;
+
+            x*=80;
+            y*=80;
+
+            drawPigs(x, y);
+        }
     }
 
     if(chicken.loadOk) {
-        drawChickens();
+        for(var i=0; i < nChickens; i++) {
+            var x = randomF(0, 5);
+            var y = randomF(0, 5);;
+
+            x*=80;
+            y*=80;
+
+            drawChickens(x, y);
+        }
     }
 
     if(wolf.loadOk) {
-        drawWolfs();
+        for(var i=0; i < nWolfs; i++) {
+            var x = randomF(0, 5);
+            var y = randomF(0, 5);
+
+            x*=80;
+            y*=80;
+
+            drawWolfs(x, y);
+        }
     }
 }
 
@@ -48,11 +89,11 @@ var cow = {
 
 function loadCows() {
     cow.loadOk = true;
-    draw();
+    draw()
 }
 
-function drawCows() {
-    paper.drawImage(cow.image, 10, 10);
+function drawCows(x, y) {
+    paper.drawImage(cow.image, x, y);
 }
 
 cow.image = new Image();
@@ -71,8 +112,8 @@ function loadPigs() {
     draw();
 }
 
-function drawPigs() {
-    paper.drawImage(pig.image, 250, 150);
+function drawPigs(x, y) {
+    paper.drawImage(pig.image, x, y);
 }
 
 pig.image = new Image();
@@ -91,8 +132,8 @@ function loadChickens() {
     draw();
 }
 
-function drawChickens() {
-    paper.drawImage(chicken.image, 180, 360);
+function drawChickens(x, y) {
+    paper.drawImage(chicken.image, x, y);
 }
 
 chicken.image = new Image();
@@ -111,8 +152,8 @@ function loadWolfs() {
     draw();
 }
 
-function drawWolfs() {
-    paper.drawImage(wolf.image, 250,250);
+function drawWolfs(x, y) {
+    paper.drawImage(wolf.image, x, y);
 }
 
 wolf.image = new Image();
