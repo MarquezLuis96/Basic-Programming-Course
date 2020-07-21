@@ -1,0 +1,11 @@
+.palette {
+    color: #091B32;
+    color: #EDA450;
+    color: #31CEC3;
+    color: #C9A72B;
+}
+
+body {
+    background-color: blue;
+    color: white;
+}
