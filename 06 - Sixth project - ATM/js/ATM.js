@@ -13,6 +13,13 @@ var bankNotes;
 //div: Math.floor division to choose the amount of bills to be delivered
 var div;
 
+//showMessage
+var showMessage;
+showMessage = document.getElementById("deliveredBills");
+
+//Auxiliar String
+var auxStr;
+
 //ATM Class
 class ATM {
 
@@ -59,7 +66,6 @@ class ATM {
 
                 delvBills.push(new Bill(bi.value, bankNotes));
                 wdMoney-=(bi.value * bankNotes);
-
             }
             avMoney = this.calculateMoney();
 
@@ -80,13 +86,21 @@ class ATM {
         return din;
     }
 
+    //showOnPage
+    showOnPage(str) {
+        showMessage.innerHTML = (str);
+    }
+
     //wdBankNotes: Check if the cashier has money, if true he withdraws it, if false he shows a message
     wdBankNotes(wdMoney) {
+        document.getElementById("txtF_Withdraw").value = "";
         if(avMoney >= wdMoney) {
             this.delvBankNotes(wdMoney);
+            this.showOnPage("Delivered: ");
         }
         else {
             console.log("No money available");
+            this.showOnPage("No money available");
         }
     }
 }
