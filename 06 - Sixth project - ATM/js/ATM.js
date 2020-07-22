@@ -24,9 +24,15 @@ var auxStr;
 class ATM {
 
     constructor() {
-        avBills.push(new Bill(50, 3));
-        avBills.push(new Bill(20, 2));
-        avBills.push(new Bill(10, 2));
+
+        avBills.push(new Bill(100, this.rand(this.rand(100) - 1)));
+        avBills.push(new Bill(50, this.rand(this.rand(100) - 1)));
+        avBills.push(new Bill(20, this.rand(this.rand(100) - 1)));
+        avBills.push(new Bill(10, this.rand(this.rand(100) - 1)));
+        avBills.push(new Bill(5, this.rand(this.rand(100) - 1)));
+        avBills.push(new Bill(2, this.rand(this.rand(100) - 1)));
+        avBills.push(new Bill(1, this.rand(this.rand(100) - 1)));
+
         bankNotes = 0;
         avMoney = this.calculateMoney();
         console.log("Available money: " + this.calculateMoney());
@@ -51,6 +57,7 @@ class ATM {
 
     //delvBankNotes: In this function, the least amount of banknotes are delivered
     delvBankNotes(wdMoney) {
+        auxStr="";
         for(var bi of avBills) {
             bankNotes = 0;
             if(wdMoney > 0) {
@@ -58,10 +65,22 @@ class ATM {
                 if(div > bi.quantity) {
                     bankNotes = bi.quantity;
                     this.substractBills(bi.value, bankNotes);
+                    if(bankNotes == 1) {
+                        auxStr += "$" + bi.value + " -> " + bankNotes + " bill <br/>";
+                    }
+                    else if(bankNotes > 1) {
+                        auxStr += "$" + bi.value + " -> " + bankNotes + " bills <br/>";
+                    }
                 }
                 else {
                     bankNotes = div;
                     this.substractBills(bi.value, bankNotes);
+                    if(bankNotes == 1) {
+                        auxStr += "$" + bi.value + " -> " + bankNotes + " bill <br/>";
+                    }
+                    else if(bankNotes > 1) {
+                        auxStr += "$" + bi.value + " -> " + bankNotes + " bills <br/>";
+                    }
                 }
 
                 delvBills.push(new Bill(bi.value, bankNotes));
@@ -91,12 +110,16 @@ class ATM {
         showMessage.innerHTML = (str);
     }
 
+    rand(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
     //wdBankNotes: Check if the cashier has money, if true he withdraws it, if false he shows a message
     wdBankNotes(wdMoney) {
-        document.getElementById("txtF_Withdraw").value = "";
+        document.getElementById("txtF_Withdraw").value = ""; 
         if(avMoney >= wdMoney) {
             this.delvBankNotes(wdMoney);
-            this.showOnPage("Delivered: ");
+            this.showOnPage(auxStr);
         }
         else {
             console.log("No money available");
