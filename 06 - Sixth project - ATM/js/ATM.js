@@ -83,7 +83,10 @@ class ATM {
                     }
                 }
 
-                delvBills.push(new Bill(bi.value, bankNotes));
+                if(bankNotes != 0) {
+                    delvBills.push(new Bill(bi.value, bankNotes));
+                }
+                
                 wdMoney-=(bi.value * bankNotes);
             }
             avMoney = this.calculateMoney();
